@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Úkolníček</title>
+  </head>
+  <body>
+    <h1>Úkolníček</h1>
+
+    <form id="task-form">
+      <input
+        type="text"
+        id="title"
+        placeholder="Nový úkol..."
+        maxlength="200"
+        required
+      />
+      <select id="priority">
+        <option value="low">Nízká priorita</option>
+        <option value="medium" selected>Střední priorita</option>
+        <option value="high">Vysoká priorita</option>
+      </select>
+      <button type="submit">Přidat</button>
+    </form>
+
+    <p id="error" style="color: red"></p>
+
+    <h2>Seznam úkolů</h2>
+    <ul id="task-list"></ul>
+
+    <script src="script.js"></script>
+  </body>
+</html>
