@@ -9,11 +9,11 @@ const MONGODB_URI =
 
 const PRIORITIES = ['low', 'medium', 'high'];
 
-// Middleware
+
 app.use(express.json());
 app.use(express.static('public'));
 
-// Databázové schéma a model
+
 const taskSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true, maxlength: 200 },
   priority: { type: String, enum: PRIORITIES, default: 'medium' },
@@ -22,7 +22,7 @@ const taskSchema = new mongoose.Schema({
 
 const Task = mongoose.model('Task', taskSchema);
 
-// GET /api/tasks – vrátí všechny úkoly (nejnovější první)
+
 app.get('/api/tasks', async (req, res) => {
   try {
     const tasks = await Task.find().sort({ createdAt: -1 });
@@ -33,7 +33,7 @@ app.get('/api/tasks', async (req, res) => {
   }
 });
 
-// POST /api/tasks – ověří vstup a uloží nový úkol
+
 app.post('/api/tasks', async (req, res) => {
   try {
     const title =
@@ -60,7 +60,7 @@ app.post('/api/tasks', async (req, res) => {
   }
 });
 
-// Připojení k databázi a spuštění serveru
+
 mongoose
   .connect(MONGODB_URI)
   .then(() => {

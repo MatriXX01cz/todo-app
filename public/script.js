@@ -14,7 +14,7 @@ function showError(message) {
   errorBox.textContent = message;
 }
 
-// Načte úkoly ze serveru a vykreslí je do seznamu
+
 async function loadTasks() {
   try {
     const response = await fetch('/api/tasks');
@@ -42,13 +42,13 @@ function renderTasks(tasks) {
 
   tasks.forEach((task) => {
     const li = document.createElement('li');
-    // textContent chrání před vložením HTML kódu (XSS)
+    
     li.textContent = `${task.title} (priorita: ${PRIORITY_LABELS[task.priority]})`;
     taskList.appendChild(li);
   });
 }
 
-// Odeslání formuláře – POST na server a následné obnovení seznamu
+
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
